@@ -1,0 +1,68 @@
+version: '3.9'
+
+services:
+  client-db:
+    container_name: client-db
+    image: postgres:16-alpine
+    ports:
+      - "8000:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U randy -d client-db" ]
+      interval: 2s
+      timeout: 10s
+      retries: 5
+    environment:
+      - POSTGRES_PASSWORD=HolaAmigo12+
+      - POSTGRES_USER=randy
+      - POSTGRES_DB=client-db
+
+  account-db:
+    container_name: account-db
+    image: postgres:16-alpine
+    ports:
+      - "8001:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U randy -d account-db" ]
+      interval: 2s
+      timeout: 10s
+      retries: 5
+    environment:
+      - POSTGRES_PASSWORD=HolaAmigo12+
+      - POSTGRES_USER=randy
+      - POSTGRES_DB=account-db
+
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+      
+  client-server:
+    depends_on:
+      client-db:
+        condition: service_healthy
+    build:
+      context: ./client-server
+      dockerfile: Dockerfile
+      
+  account-server:
+    depends_on:
+      client-db:
+        condition: service_healthy
+    build:
+      context: ./account-server
+      dockerfile: Dockerfile
+      
+  router:
+    depends_on:
+      - account-server
+      - client-server
+      - eureka-server
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+      
+    ports:
+      - "8080:8080"

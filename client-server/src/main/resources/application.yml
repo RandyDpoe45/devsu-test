@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: CLIENT-SERVER
+  profiles:
+    include: prod
+
+server:
+  port: 8090

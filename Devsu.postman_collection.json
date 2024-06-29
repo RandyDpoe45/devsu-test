@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "689bae59-c65e-4e2e-bc5f-0ceb935cc378",
+		"name": "Devsu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9539608",
+		"_collection_link": "https://lively-water-578564.postman.co/workspace/My-Workspace~92e5e77b-7b73-49dc-88cc-9defcca7af26/collection/9539608-689bae59-c65e-4e2e-bc5f-0ceb935cc378?action=share&source=collection_link&creator=9539608"
+	},
+	"item": [
+		{
+			"name": "create client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\" : \"Randy\",\n    \"age\" : 18,\n    \"identification\" : \"123456\",\n    \"address\": \"Carrera 15 # 20A60\",\n    \"telephoneNumber\" : \"3214095273\",\n    \"password\" : \"123456\",\n    \"clientStatusCode\": \"ACTIVE\" //\"DISABLED\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/CLIENT/client",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"CLIENT",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/CLIENT/client",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"CLIENT",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/CLIENT/client/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"CLIENT",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\" : \"Randy\",\n    \"age\" : 18,\n    \"identification\" : \"123456\",\n    \"address\": \"Carrera 15 # 20A60\",\n    \"telephoneNumber\" : \"3143680264\",\n    \"password\" : \"123456\",\n    \"clientStatusCode\": \"ACTIVE\" //\"DISABLED\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/CLIENT/client/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"CLIENT",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/CLIENT/client/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"CLIENT",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\" : 1,\n    \"accountTypeCode\" : \"SAVINGS\", //CHECKING\n    \"accountStatusCode\" : \"ACTIVE\", //DISABLED\n    \"initialBalance\" : 540\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ACCOUNT/account",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ACCOUNT",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create account movement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\" : \"850386180711\",\n    \"amount\": 200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ACCOUNT/accountMovement",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ACCOUNT",
+						"accountMovement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generar reporte",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ACCOUNT/report?desde=20/06/2024&hasta=30/06/2024&idCliente=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ACCOUNT",
+						"report"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "20/06/2024"
+						},
+						{
+							"key": "hasta",
+							"value": "30/06/2024"
+						},
+						{
+							"key": "idCliente",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://account-db:5432/account-db
+    username: randy
+    password: HolaAmigo12+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
